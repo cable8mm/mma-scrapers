@@ -1,9 +1,9 @@
 {
-    "name": "cable8mm/mma-scrappers",
-    "description": "This is the statistics scrappers for MMA",
+    "name": "cable8mm/mma-scrapers",
+    "description": "MMA scraper library for UFC, Road FC, and Black Combat.",
     "type": "library",
     "keywords": [
-        "scrapper",
+        "scraper",
         "mma",
         "blackcombat",
         "ufc",
@@ -18,7 +18,10 @@
         }
     ],
     "require": {
-        "php": "^8.3"
+        "php": "^8.4",
+        "guzzlehttp/guzzle": "^7.10",
+        "symfony/dom-crawler": "^8.0",
+        "symfony/css-selector": "^8.0"
     },
     "require-dev": {
         "laravel/pint": "^1.27",
@@ -26,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Cable8mm\\MmaScrappers\\": "src/"
+            "Cable8mm\\MmaScrapers\\": "src/"
         }
     },
     "autoload-dev": {
