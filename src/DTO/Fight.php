@@ -2,11 +2,24 @@
 
 namespace Cable8mm\MmaScrapers\DTO;
 
+use Cable8mm\MmaScrapers\Enums\FightStatus;
+use Cable8mm\MmaScrapers\Enums\WinnerCorner;
+
 class Fight
 {
-    public string $fighterA;
+    public function __construct(
+        public string $eventName,
 
-    public string $fighterB;
+        public Fighter $redFighter,
+        public Fighter $blueFighter,
+        public ?FightStatus $status,
 
-    public ?string $result = null;
+        public ?string $weightClass,
+        public ?string $method,
+
+        public ?int $round,
+        public ?string $time,
+
+        public ?WinnerCorner $winnerCorner
+    ) {}
 }

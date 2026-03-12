@@ -8,7 +8,7 @@ class Event
 
     public string $date;
 
-    public string $location;
+    public ?string $location = null;
 
     /** @var Fight[] */
     public array $fights = [];
