@@ -9,17 +9,14 @@ class Fight
 {
     public function __construct(
         public string $eventName,
-
         public Fighter $redFighter,
         public Fighter $blueFighter,
         public ?FightStatus $status,
-
         public ?string $weightClass,
         public ?string $method,
-
         public ?int $round,
         public ?string $time,
-
         public ?WinnerCorner $winnerCorner
-    ) {}
+    ) {
+    }
 }
