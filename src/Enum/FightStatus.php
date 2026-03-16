@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\MmaScrapers\Enums;
+namespace Cable8mm\MmaScrapers\Enum;
 
 enum FightStatus: string
 {

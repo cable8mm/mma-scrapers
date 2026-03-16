@@ -1,8 +1,8 @@
 <?php
 
-namespace Cable8mm\MmaScrapers\Promotions\Tapology;
+namespace Cable8mm\MmaScrapers\Promotion\Tapology;
 
-use Cable8mm\MmaScrapers\DTO\Event;
+use Cable8mm\MmaScrapers\DTO\EventDTO;
 use Cable8mm\MmaScrapers\Http\HttpClientInterface;
 use Cable8mm\MmaScrapers\Parser\EventParser;
 
@@ -18,10 +18,10 @@ class EventScraper
         $this->parser = $parser;
     }
 
-    public function scrape(string $url): Event
+    public function scrape(string $url): EventDTO
     {
         $html = $this->http->get($url);
 
-        return $this->parser->parse($html);
+        return $this->parser->parse($html->getBody());
     }
 }
