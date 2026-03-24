@@ -12,6 +12,56 @@ Installation:
 composer require cable8mm/mma-scrapers
 ```
 
+## Description
+
+### Scraper Flows
+
+```txt
+PromotionScraper
+     ↓
+EventScraper
+     ↓
+FightScraper
+     ↓
+FighterScraper
+```
+
+```txt
+BlackCombatScraper
+   ↓
+BlackCombatEventParser
+   ↓
+BlackCombatFightParser
+   ↓
+FighterParser
+```
+
+### Crawling Flows
+
+```txt
+/events
+   ↓
+/events/black-combat-12
+   ↓
+fight card
+   ↓
+fighter links
+```
+
+### MMA aggregator's data flows
+
+```txt
+source scraper
+   ↓
+FightDTO
+   ↓
+FightNormalizer
+   ↓
+FightAggregator
+   ↓
+database
+```
+
 ## Test
 
 ```sh
