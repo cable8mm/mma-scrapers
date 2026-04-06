@@ -6,8 +6,10 @@ class EventDTO
 {
     public function __construct(
         public string $name,
-        public ?string $location,
-        public \DateTimeInterface $date,
-        public string $url
-    ) {}
+        public ?string $location = null,
+        public ?\DateTimeInterface $date = null,
+        public ?string $url = null,
+        public ?string $externalId = null
+    ) {
+    }
 }
