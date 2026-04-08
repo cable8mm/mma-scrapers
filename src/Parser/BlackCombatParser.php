@@ -19,7 +19,8 @@ class BlackCombatParser
             $date = $node->filter('.event-date')->text();
 
             $events[] = new EventDTO(
-                name: 'event name'
+                name: $name,
+                date: new \DateTime($date)
             );
         });
 
