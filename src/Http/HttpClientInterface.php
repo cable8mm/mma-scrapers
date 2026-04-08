@@ -4,5 +4,7 @@ namespace Cable8mm\MmaScrapers\Http;
 
 interface HttpClientInterface
 {
-    public function get(string $url): string;
+    public function get(string $url): self;
+
+    public function getBody(): string;
 }

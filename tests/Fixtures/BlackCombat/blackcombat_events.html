@@ -1,0 +1,605 @@
+
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>블랙컴뱃</title>
+
+<link rel="stylesheet" href="https://www.blackcombat-official.com/theme/blackcombat/css/default.css?ver=2603113">
+<link rel="stylesheet" href="https://www.blackcombat-official.com/js/font-awesome/css/font-awesome.min.css?ver=2603113">
+<link rel="stylesheet" href="/theme/blackcombat/css/mobile_event.css?v=20220918">
+<!--[if lte IE 8]>
+<script src="https://www.blackcombat-official.com/js/html5.js"></script>
+<![endif]-->
+<script>
+// 자바스크립트에서 사용하는 전역변수 선언
+var g5_url       = "https://www.blackcombat-official.com";
+var g5_bbs_url   = "https://www.blackcombat-official.com/bbs";
+var g5_is_member = "";
+var g5_is_admin  = "";
+var g5_is_mobile = "";
+var g5_bo_table  = "";
+var g5_sca       = "";
+var g5_editor    = "";
+var g5_cookie_domain = "";
+var g5_theme_shop_url = "https://www.blackcombat-official.com/theme/blackcombat/shop";
+var g5_shop_url = "https://www.blackcombat-official.com/shop";
+</script>
+
+<meta name="type" content="website" />
+<meta name="title" content="블랙컴뱃 - BLACKCOMBAT" />
+<meta name="description" content="Who is the king? The Revolution of MMA, Black Combat" />
+<meta name="keywords" content="블랙컴뱃, MMA, 이종격투기, 종합격투기, 주짓수, 격투대회, 체육관, MMA체육관" />
+<meta name="image" content="https://www.blackcombat-official.com/theme/blackcombat/img/logo.png" />
+<meta name="url" content="https://www.blackcombat-official.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="블랙컴뱃 - BLACKCOMBAT" />
+<meta property="og:description" content="Who is the king? The Revolution of MMA, Black Combat" />
+<meta property="og:keywords" content="블랙컴뱃, MMA, 이종격투기, 종합격투기, 주짓수, 격투대회, 체육관, MMA체육관" />
+<meta property="og:image" content="https://www.blackcombat-official.com/theme/blackcombat/img/logo.png" />
+<meta property="og:url" content="https://www.blackcombat-official.com/" />
+<link rel="canonical" href="https://www.blackcombat-official.com/">
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/img/blackcombat_favicon.png?v=20221017" />
+<link href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://www.blackcombat-official.com/js/jquery.menu.js?ver=2511112"></script>
+<script src="https://www.blackcombat-official.com/js/common.js?ver=2511112"></script>
+<script src="https://www.blackcombat-official.com/js/wrest.js?ver=2511112"></script>
+<script src="https://www.blackcombat-official.com/js/placeholders.min.js?ver=2511112"></script>
+</head>
+
+<body>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TNKR3YS1FL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TNKR3YS1FL');
+</script>
+
+<style>
+    html, body {
+        -webkit-text-size-adjust: none; /* 모바일 브라우저 자동 확대 방지 */
+        text-size-adjust: none;
+    }
+</style><style>
+    .live_mark{
+        position: absolute;
+        top: 13px;
+        padding: 2px 5px;
+        background-color: #000000;
+        color: #ffba3c;
+        font-size: 0.8rem;
+        border-radius: 4px;
+        line-height: 1rem;
+        width: 58px;
+        text-align: center;
+    }
+</style>
+<!-- 상단 시작 { -->
+<div id="tnb" style="background:#212020;">
+    <div class="inner">
+        <ul id="hd_qnb">
+            <li>
+                <input type="text" class="search-value-input" style="background-color: #212020;color: #919191;border: 1px solid #919191;padding: 2px;width: 100px;margin-top: -6px;" />
+                <button onclick="searchPlayer(this)" style="margin-top: -6px; height: 27px; width: 40px; background-color: #111111; color: gray;">검색</button>
+            </li>
+                        <li><a href="https://www.blackcombat-official.com/shop/orderinquiry.php">비회원 주문조회</a></li>
+            <li><a href="https://www.blackcombat-official.com/bbs/register.php">회원가입</a></li>
+            <li><a href="https://www.blackcombat-official.com/bbs/login.php">로그인</a></li>
+                    </ul>
+    </div>
+</div>
+
+<script>
+    var ajax_url = "https://www.blackcombat-official.com/theme/blackcombat/shop";
+    function searchPlayer(){
+        let keyword = $(".search-value-input").val();
+        if(keyword === null || keyword === undefined || keyword === ""){
+            alert("검색어를 입력하세요.");
+            return;
+        }else if(keyword.length <= 1){
+            alert("검색어를 두 글자 이상 입력하세요.");
+            return;
+        }
+
+        $.ajax({
+            url: ajax_url + "/ajax.action.php",
+            type: "POST",
+            data: {"action":"get_player_info", "search_keyword":keyword},
+            dataType: "json",
+            async: true,
+            cache: false,
+            success: function(data, textStatus) {
+                gtag('event', 'player_search', {
+                    search_term: keyword
+                });
+                if(data.resultArray.length === 0){
+                    alert("검색된 선수가 없습니다.");
+                }else if(data.resultArray.length > 1){
+                    let message = "검색된 선수가 두 명 이상입니다.\n -";
+                    message += data.resultArray.map(item => item.fighter_name + " (" + item.fighter_ringname + ")").join("\n -");
+                    alert(message);
+                }else{
+                    location.href="https://www.blackcombat-official.com/fighter/"+data.resultArray[0].fighter_seq;
+                }
+            },
+            error : function(request, status, error){
+                console.log(error);
+                alert("false ajax :"+request.responseText);
+            }
+        });
+    }
+
+    $('.search-value-input').keypress(function(event) {
+        if (event.which === 13 || event.key === 'Enter') {
+            searchPlayer()
+        }
+    });
+</script>
+
+<div id="hd">
+    <h1 id="hd_h1">블랙컴뱃</h1>
+    <div id="skip_to_container"><a href="#container">본문 바로가기</a></div>
+
+    
+<!-- 팝업레이어 시작 { -->
+<div id="hd_pop">
+    <h2>팝업레이어 알림</h2>
+
+<span class="sound_only">팝업레이어 알림이 없습니다.</span></div>
+
+<script>
+$(function() {
+    $(".hd_pops_reject").click(function() {
+        var id = $(this).attr('class').split(' ');
+        var ck_name = id[1];
+        var exp_time = parseInt(id[2]);
+        $("#"+id[1]).css("display", "none");
+        set_cookie(ck_name, 1, exp_time, g5_cookie_domain);
+    });
+    $('.hd_pops_close').click(function() {
+        var idb = $(this).attr('class').split(' ');
+        $('#'+idb[1]).css('display','none');
+    });
+    $("#hd").css("z-index", 1000);
+});
+</script>
+<!-- } 팝업레이어 끝 -->
+    <div id="hd_wrapper">
+
+        <div id="logo">
+            <a href="https://www.blackcombat-official.com"><img src="https://www.blackcombat-official.com/img/logo.png" alt="블랙컴뱃"></a>
+        </div>
+
+        <div class="menus">
+            <div class="menu_items">
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/company.php" class="menu_item_anchor">COMPANY</a></div>
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/sponsors.php" class="menu_item_anchor">SPONSORS</a></div>
+                <div class="menu_item" style="position:relative">
+                                                                        <!-- <a href="#" class="menu_item_anchor" onclick="location.href='https://tickets.interpark.com/goods/25018630'">TICKET</a>    
+                            <div class="live_mark">LIVE🔥</div> -->
+                            <a href="#" class="menu_item_anchor" onclick="alert('상품을 준비중입니다.');return false;">TICKET</a>
+                                                            </div>
+                <div class="menu_item"><a href="http://www.hegemonyblack.com/main/index.php" class="menu_item_anchor" target="_blank">STORE</a></div>
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/event.php?page=10" class="menu_item_anchor">EVENT</a></div>
+                
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/blackcup.php" class="menu_item_anchor">BLACK CUP</a></div>    
+                
+                <!-- <div class="menu_item"><a href="https://www.blackcombat-official.com/video" class="menu_item_anchor">VIDEO</a></div> -->
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/ranking.php?type=fighter" class="menu_item_anchor">RANKING</a></div>
+                <!-- <div class="menu_item"><a href="https://www.blackcombat-official.com/cl.php" class="menu_item_anchor">C.L</a></div> -->
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/community" class="menu_item_anchor">COMMUNITY</a></div>
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/gym.php" class="menu_item_anchor">GYM</a></div>
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/rules.php" class="menu_item_anchor">RULES</a></div>
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/doping.php" class="menu_item_anchor">DOPING</a></div>
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/awards.php" class="menu_item_anchor">GLORIA AWARDS</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hd_bg left"></div>
+    <div class="hd_bg right"></div>
+</div>
+<!-- } 상단 끝 -->
+
+
+<hr>
+
+<!-- 콘텐츠 시작 { -->
+<div id="wrapper">
+    <div id="container_wr">
+   
+    <div id="container">
+        
+<style>
+    .event_category li{
+        margin: 0px 30px;
+    }
+    .event_category li a{
+        font-size:40px;
+    }
+    .event_category .custom_btn{
+        height: 50px;
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+        background-color: #ffba3c;
+        border:2px solid #777777;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+
+    .event_category .custom_btn:hover{
+        background-color:rgb(255, 166, 0);
+    }
+
+    select.custom_btn {
+        width: 300px;  
+    }
+
+    button.custom_btn {
+        width: 100px;
+        margin-left:10px;
+    }
+
+    
+
+    .event_category select option{
+        background: white;
+    }
+
+    .event_contents{
+        margin-top:50px
+    }
+    .event_contents .event_title{
+        font-family: 'Teko', sans-serif, cursive;
+        font-size:3rem;
+        text-align:center;
+    }
+
+    
+    
+</style>
+    <div class="sub_visual">
+        <div class="sub_visual_items">
+            <div class="sub_visual_caption">
+                <div class="category">EVENT</div>
+            </div>
+        </div>
+    </div>
+    <div class="sub_content">
+        <div class="sub_container">
+            <div class="event_page">
+                <div class="event_category">
+                    <select class="custom_btn" onchange="location.href='/event.php?eventCategory='+value">
+                        <option value="N" selected>NUMBERING SERIES</option>
+                        <option value="R" >RISE SERIES</option>
+                        <option value="C" >CHAMPIONS LEAGUES</option>
+                        <option value="BC" >BLACK CUP</option>
+                    </select>
+                    <button class="custom_btn" id="latest_event_btn">
+                        LATEST
+                    </button>
+                </div>
+                <div class="event_contents">
+                    <div class="event_title">BLACK COMBAT NUMBERING SERIES</div>                                                                                <div class="event_list">
+                        <ul >
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/285/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 16: EXODUS</b></div>
+                                        <div style="margin-bottom:10px">2026년 01월 31일</div>
+                                        <div>인천광역시 중구 인스파이어 아레나</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=285"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/281/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 15: PARA BELLUM</b></div>
+                                        <div style="margin-bottom:10px">2025년 08월 23일</div>
+                                        <div>	인천광역시 중구 인스파이어 아레나</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=281"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/277/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 14: END GAME</b></div>
+                                        <div style="margin-bottom:10px">2025년 05월 06일</div>
+                                        <div>인천광역시 중구 인스파이어 아레나</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=277"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/272/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 13: 정상결전</b></div>
+                                        <div style="margin-bottom:10px">2024년 12월 28일</div>
+                                        <div>서울시 성북구 화정체육관</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=272"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/266/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 12: THE RETURN OF THE KINGS</b></div>
+                                        <div style="margin-bottom:10px">2024년 09월 28일</div>
+                                        <div>서울특별시 성북구 화정체육관</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=266"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/265/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 11: 부산상륙작전</b></div>
+                                        <div style="margin-bottom:10px">2024년 07월 13일</div>
+                                        <div>부산시 해운대구 BEXCO</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=265"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/234/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 10: 서울의 밤</b></div>
+                                        <div style="margin-bottom:10px">2024년 01월 20일</div>
+                                        <div>서울특별시 성북구 화정체육관</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=234"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/233/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 9: OLD BOYS</b></div>
+                                        <div style="margin-bottom:10px">2023년 11월 18일</div>
+                                        <div>인천광역시 남동구 남동체육관</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=233"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/232/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 8: THE LAST SAMURAI</b></div>
+                                        <div style="margin-bottom:10px">2023년 09월 18일</div>
+                                        <div>도쿄 고라쿠엔 홀</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=232"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/231/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 7: CIVIL WAR</b></div>
+                                        <div style="margin-bottom:10px">2023년 07월 22일</div>
+                                        <div>고양시 일산서구 킨텍스</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=231"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/230/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 6: THE FINAL CHECKMATE</b></div>
+                                        <div style="margin-bottom:10px">2023년 04월 15일</div>
+                                        <div>인천광역시 중구 파라다이스시티</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=230"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/229/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 5: 칼의노래</b></div>
+                                        <div style="margin-bottom:10px">2023년 02월 04일</div>
+                                        <div>수원시 영통구 컨벤션센터</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=229"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/228/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 4: THE ERA OF NEW KINGS</b></div>
+                                        <div style="margin-bottom:10px">2022년 12월 31일</div>
+                                        <div>인천광역시 중구 크로마클럽</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=228"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/227/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 3: LET THE LION ROAR</b></div>
+                                        <div style="margin-bottom:10px">2022년 10월 22일</div>
+                                        <div>인천광역시 중구 파라다이스시티</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=227"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/226/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 2: THE DARK KNIGHT BEGINS</b></div>
+                                        <div style="margin-bottom:10px">2022년 06월 18일</div>
+                                        <div>인천광역시 중구 파라다이스시티</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=226"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li style="width:100%; border-top: 1px solid #bbbbbb; padding:10px">
+                                <div style="display:flex;">
+                                    <div style="flex:1 1 80px;"><img style="width:100%; height:180px; object-fit: contain; " src="https://www.blackcombat-official.com/theme/blackcombat/img/event/225/thumb.jpg" /></div>
+                                    <div style="flex:3 1 100px; display:flex; flex-direction:column; justify-content:center; padding:0px 70px; font-size:1.0rem;">
+                                        <div style="font-size:1.1rem;"><b>블랙컴뱃 1: WHO IS THE KING?</b></div>
+                                        <div style="margin-bottom:10px">2022년 02월 24일</div>
+                                        <div>서울특별시 강남구 코엑스</div>
+                                    </div>
+                                    <div style="flex:1 1 100px; display:flex; flex-direction:column; justify-content:center; align-items: center;">
+                                                                        
+                                    <button onclick='location.href="/eventDetail.php?eventSeq=225"' style="width:150px; height:30px; font-weight:bold; border:1px solid black;">상세보기</button>
+                                    </div>
+                                </div>
+                            </li>
+                                                </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(() => {
+            $.ajax({
+            type: 'get',
+            url: '/theme/blackcombat/api/get_recent_event.php',
+            success: function(response) {
+                let event_seq = JSON.parse(response)[0].event_seq;
+                $("#latest_event_btn").on("click",() => {
+                    location.href = "https://www.blackcombat-official.com/eventDetail.php?eventSeq="+event_seq;
+                });
+
+            },
+            error: function(error) {
+                console.error('Error adding data:', error);
+            }
+        });
+    });
+    </script>
+
+
+    </div>
+</div>
+
+</div>
+<!-- } 콘텐츠 끝 -->
+
+<hr>
+
+<!-- 하단 시작 { -->
+<div id="ft">
+    <div class="footer_social">
+        <div class="footer_social_title"><img src="https://www.blackcombat-official.com/theme/blackcombat/img/footer_social_title.png" /></div>
+
+        <div class="footer_social_items">
+            <div class="footer_social_item"><a href="https://www.youtube.com/channel/UC_IYjiKaQBPq-K1Iq4sM-UQ" class="footer_social_item_anchor" target="_blank"><img src="https://www.blackcombat-official.com/theme/blackcombat/img/footer_social_youtube_icon.png" /></a></div>
+            <div class="footer_social_item"><a href="https://www.instagram.com/blackcombat_official/" class="footer_social_item_anchor" target="_blank"><img src="https://www.blackcombat-official.com/theme/blackcombat/img/footer_social_instagram_icon.png" /></a></div>
+        </div>
+    </div>
+
+    <div class="footer_copyright">
+        <p style="padding-bottom:5px;">회사명 : 주식회사 이데아 파라곤</p>
+        <p style="padding-bottom:5px;">주소 : 서울시 성동구 서울숲2길 35</p>
+        <p style="padding-bottom:5px;">사업자 등록번호 : 682-81-02925</p>
+        <p style="padding-bottom:5px;">대표 : 박평화</p>
+        <p style="padding-bottom:5px;">전화 : 070-5222-9146</p>
+        <p style="padding-bottom:5px;">통신판매업신고번호 : 2022-서울금천-2877</p>
+        <p style="padding-bottom:10px;">개인정보 보호책임자 : 박영광 (pykp3927@gmail.com)</p>
+
+        <p>Blackcombat © 2026. All Rights Reserved.</p>
+        <p style="font-size: 11px; color: #FFF; margin-top: 5px;">Designed by <a href="https://monsterzym.com/" target="_blank" style="color: #FFF;"> MONSTERZYM</a></p>
+    </div>
+
+    <button type="button" id="top_btn">
+    	<i class="fa fa-arrow-up" aria-hidden="true"></i><span class="sound_only">상단으로</span>
+    </button>
+
+    <script>
+    $(function() {
+        $("#top_btn").on("click", function() {
+            $("html, body").animate({scrollTop:0}, '500');
+            return false;
+        });
+    });
+    </script>
+</div>
+
+
+<!-- } 하단 끝 -->
+
+<script>
+$(function() {
+    // 폰트 리사이즈 쿠키있으면 실행
+    font_resize("container", get_cookie("ck_font_resize_rmv_class"), get_cookie("ck_font_resize_add_class"));
+});
+</script>
+
+
+
+
+</body>
+</html>

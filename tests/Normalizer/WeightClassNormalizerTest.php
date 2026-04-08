@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Promotions\Tapology;
+namespace Tests\Normalizer\Tapology;
 
-use Cable8mm\MmaScrapers\Enums\WeightClass;
-use Cable8mm\MmaScrapers\Normalizers\WeightClassNormalizer;
+use Cable8mm\MmaScrapers\Enum\WeightClass;
+use Cable8mm\MmaScrapers\Normalizer\WeightClassNormalizer;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

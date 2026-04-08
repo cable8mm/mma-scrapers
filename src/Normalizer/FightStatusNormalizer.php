@@ -1,8 +1,8 @@
 <?php
 
-namespace Cable8mm\MmaScrapers\Normalizers;
+namespace Cable8mm\MmaScrapers\Normalizer;
 
-use Cable8mm\MmaScrapers\Enums\FightStatus;
+use Cable8mm\MmaScrapers\Enum\FightStatus;
 
 class FightStatusNormalizer
 {

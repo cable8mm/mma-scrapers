@@ -3,10 +3,13 @@
 namespace Cable8mm\MmaScrapers\Http;
 
 use GuzzleHttp\Client;
+use Psr\Http\Message\ResponseInterface;
 
 class GuzzleHttpClient implements HttpClientInterface
 {
     private Client $client;
+
+    private ResponseInterface $response;
 
     public function __construct()
     {
@@ -18,10 +21,15 @@ class GuzzleHttpClient implements HttpClientInterface
         ]);
     }
 
-    public function get(string $url): string
+    public function get(string $url): self
     {
-        $response = $this->client->get($url);
+        $this->response = $this->client->get($url);
 
-        return (string) $response->getBody();
+        return $this;
+    }
+
+    public function getBody(): string
+    {
+        return (string) $this->response->getBody();
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Promotions\Tapology;
+namespace Tests\Normalizer\Tapology;
 
-use Cable8mm\MmaScrapers\Enums\FightStatus;
-use Cable8mm\MmaScrapers\Normalizers\FightStatusNormalizer;
+use Cable8mm\MmaScrapers\Enum\FightStatus;
+use Cable8mm\MmaScrapers\Normalizer\FightStatusNormalizer;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

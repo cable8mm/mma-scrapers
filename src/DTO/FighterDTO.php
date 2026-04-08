@@ -2,7 +2,7 @@
 
 namespace Cable8mm\MmaScrapers\DTO;
 
-class Fighter
+class FighterDTO
 {
     public string $name;
 }
