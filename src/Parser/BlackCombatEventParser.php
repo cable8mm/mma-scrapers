@@ -1,17 +1,20 @@
 <?php
 
-namespace Cable8mm\MmaScrapers\Parser\BlackCombat;
+namespace Cable8mm\MmaScrapers\Parser;
 
 use Cable8mm\MmaScrapers\Contract\EventParserInterface;
 use Cable8mm\MmaScrapers\DTO\EventDTO;
 use Symfony\Component\DomCrawler\Crawler;
 
-class BlackCombatEventListParser implements EventParserInterface
+class BlackCombatEventParser implements EventParserInterface
 {
     /**
+     * Parse the HTML content and extract event information.
+     *
+     * @param string $html The HTML content to parse.
      * @return EventDTO[]
      */
-    public function parse(string $html): array
+    public function parseEvents(string $html): array
     {
         $crawler = new Crawler($html);
 
@@ -48,5 +51,35 @@ class BlackCombatEventListParser implements EventParserInterface
         });
 
         return $events;
+    }
+
+    /**
+     * Parse the HTML content and extract detailed event information.
+     *
+     * @param string $html The HTML content to parse.
+     * @return EventDTO The detailed event information.
+     */
+    public function parseEvent(string $html): EventDTO
+    {
+        $crawler = new Crawler($html);
+
+        $event = new EventDTO(
+            name: $crawler->filter('div.category')->text()
+        );
+
+        return $event;
+    }
+
+    /**
+     * Parse the HTML content and extract fight information.
+     *
+     * @param string $html The HTML content to parse.
+     * @return array The list of fights.
+     */
+    public function parseFights(string $html): array
+    {
+        // Implementation for parsing fights
+
+        return [];
     }
 }
