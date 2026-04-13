@@ -4,8 +4,17 @@ namespace Cable8mm\MmaScrapers\Normalizer;
 
 use Cable8mm\MmaScrapers\Enum\WeightClass;
 
+/**
+ * Class responsible for normalizing weight class strings to WeightClass enum values.
+ */
 class WeightClassNormalizer
 {
+    /**
+    * Normalize a weight class string to a WeightClass enum value.
+    *
+    * @param string $value The weight class as a string (e.g., "Lightweight", "Heavyweight", "Catchweight").
+    * @return WeightClass|null The corresponding WeightClass enum value, or null if the weight class is unrecognized.
+    */
     public static function normalize(string $value): ?WeightClass
     {
         $value = preg_replace('/_/', ' ', strtolower(trim($value)));

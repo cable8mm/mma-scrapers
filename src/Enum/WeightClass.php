@@ -2,6 +2,9 @@
 
 namespace Cable8mm\MmaScrapers\Enum;
 
+/**
+ * Enum representing the weight class of a fight.
+ */
 enum WeightClass: string
 {
     case STRAWWEIGHT = 'strawweight';

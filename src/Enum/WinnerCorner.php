@@ -2,6 +2,9 @@
 
 namespace Cable8mm\MmaScrapers\Enum;
 
+/**
+ * Enum representing the corner of the winner in a fight.
+ */
 enum WinnerCorner: string
 {
     case RED = 'red';
