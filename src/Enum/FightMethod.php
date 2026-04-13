@@ -2,6 +2,9 @@
 
 namespace Cable8mm\MmaScrapers\Enum;
 
+/**
+ * Enum representing the method by which a fight was decided.
+ */
 enum FightMethod: string
 {
     case KO = 'ko';

@@ -4,8 +4,17 @@ namespace Cable8mm\MmaScrapers\Normalizer;
 
 use Cable8mm\MmaScrapers\Enum\FightMethod;
 
+/**
+ * Class responsible for normalizing fight method strings to FightMethod enum values.
+ */
 class FightMethodNormalizer
 {
+    /**
+    * Normalize a fight method string to a FightMethod enum value.
+    *
+    * @param string $method The fight method as a string (e.g., "KO", "Submission", "Decision").
+    * @return FightMethod|null The corresponding FightMethod enum value, or null if the method is unrecognized.
+    */
     public static function normalize(string $method): ?FightMethod
     {
         $method = strtolower($method);

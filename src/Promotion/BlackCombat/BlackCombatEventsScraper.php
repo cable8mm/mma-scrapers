@@ -2,69 +2,27 @@
 
 namespace Cable8mm\MmaScrapers\Promotion\BlackCombat;
 
+use Cable8mm\MmaScrapers\Contract\HttpClientInterface;
 use Cable8mm\MmaScrapers\Contract\Scraper;
-use Cable8mm\MmaScrapers\DTO\EventDTO;
-use Cable8mm\MmaScrapers\Http\HttpClientInterface;
-use Symfony\Component\DomCrawler\Crawler;
+use Cable8mm\MmaScrapers\Parser\BlackCombatEventParser;
 
 class BlackCombatEventsScraper implements Scraper
 {
     private const EVENTS_URL = 'https://www.blackcombat-official.com/event.php';
 
     public function __construct(
-        private HttpClientInterface $http
+        private HttpClientInterface $http,
+        private BlackCombatEventParser $parser
     ) {
     }
 
     /**
-     * @return EventDTO[]
+     * @inheritDoc
      */
-    public function scrape(): array
+    public function scrape(?string $url = self::EVENTS_URL): array
     {
-        $response = $this->http->get(self::EVENTS_URL);
+        $html = $this->http->get($url);
 
-        return $this->parse((string) $response->getBody());
-    }
-
-    /**
-     * @return EventDTO[]
-     */
-    public function parse(string $html): array
-    {
-        $crawler = new Crawler($html);
-
-        $events = [];
-
-        $crawler->filter('.event_list li')->each(function (Crawler $node) use (&$events) {
-
-            $lines = $node->filter('div > div > div');
-
-            $name = trim($lines->eq(0)->text());
-
-            $date = trim($lines->eq(1)->text()); // 2026년 01월 31일
-            $date = str_replace('년', '-', $date);
-            $date = str_replace('월', '-', $date);
-            $date = str_replace('일', '', $date);
-            $date = str_replace(' ', '', $date);
-
-            $date = new \DateTimeImmutable($date);
-
-            $location = trim($lines->eq(2)->text());
-
-            $url = $node->filter('button')->attr('onclick');
-
-            $url = str_replace('location.href=', '', $url);
-            $url = str_replace('"', '', $url);
-            $url = str_replace("';", '', $url);
-
-            $events[] = new EventDTO(
-                $name,
-                $location,
-                $date,
-                $url
-            );
-        });
-
-        return $events;
+        return $this->parser->parseEvents($html);
     }
 }
