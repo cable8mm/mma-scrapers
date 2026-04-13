@@ -7,5 +7,5 @@ interface Scraper
     /**
      * @return iterable
      */
-    public function scrape(): iterable;
+    public function scrape(?string $url): iterable;
 }

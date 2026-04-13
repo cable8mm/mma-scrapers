@@ -2,6 +2,7 @@
 
 namespace Cable8mm\MmaScrapers\Http;
 
+use Cable8mm\MmaScrapers\Contract\HttpClientInterface;
 use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
 
@@ -21,15 +22,10 @@ class GuzzleHttpClient implements HttpClientInterface
         ]);
     }
 
-    public function get(string $url): self
+    public function get(string $url): string
     {
         $this->response = $this->client->get($url);
 
-        return $this;
-    }
-
-    public function getBody(): string
-    {
         return (string) $this->response->getBody();
     }
 }

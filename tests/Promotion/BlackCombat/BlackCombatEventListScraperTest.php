@@ -2,15 +2,16 @@
 
 namespace Tests\Promotion\BlackCombat;
 
-use Cable8mm\MmaScrapers\Http\HttpClientInterface;
-use Cable8mm\MmaScrapers\Promotion\BlackCombat\BlackCombatEventsScraper;
+use Cable8mm\MmaScrapers\Contract\HttpClientInterface;
+use Cable8mm\MmaScrapers\Parser\BlackCombat\BlackCombatEventListParser;
+use Cable8mm\MmaScrapers\Promotion\BlackCombat\BlackCombatEventListScraper;
 use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(BlackCombatEventsScraper::class)]
-class BlackCombatEventsScraperTest extends TestCase
+#[CoversClass(BlackCombatEventListScraper::class)]
+class BlackCombatEventListScraperTest extends TestCase
 {
     #[Test]
     #[AllowMockObjectsWithoutExpectations]
@@ -20,13 +21,16 @@ class BlackCombatEventsScraperTest extends TestCase
 
         $html = file_get_contents($dir);
 
-        $scraper = new BlackCombatEventsScraper(
-            $this->createMock(HttpClientInterface::class)
+        $http = $this->createMock(HttpClientInterface::class);
+
+        $http->method('get')->willReturn($html);
+
+        $scraper = new BlackCombatEventListScraper(
+            $http,
+            new BlackCombatEventListParser()
         );
 
-        $this->assertTrue(true);
-
-        $events = $scraper->parse($html);
+        $events = $scraper->scrape();
 
         $this->assertCount(16, $events);
 

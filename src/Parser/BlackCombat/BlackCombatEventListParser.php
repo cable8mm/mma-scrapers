@@ -1,31 +1,13 @@
 <?php
 
-namespace Cable8mm\MmaScrapers\Promotion\BlackCombat;
+namespace Cable8mm\MmaScrapers\Parser\BlackCombat;
 
-use Cable8mm\MmaScrapers\Contract\Scraper;
+use Cable8mm\MmaScrapers\Contract\EventParserInterface;
 use Cable8mm\MmaScrapers\DTO\EventDTO;
-use Cable8mm\MmaScrapers\Http\HttpClientInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
-class BlackCombatEventsScraper implements Scraper
+class BlackCombatEventListParser implements EventParserInterface
 {
-    private const EVENTS_URL = 'https://www.blackcombat-official.com/event.php';
-
-    public function __construct(
-        private HttpClientInterface $http
-    ) {
-    }
-
-    /**
-     * @return EventDTO[]
-     */
-    public function scrape(): array
-    {
-        $response = $this->http->get(self::EVENTS_URL);
-
-        return $this->parse((string) $response->getBody());
-    }
-
     /**
      * @return EventDTO[]
      */
