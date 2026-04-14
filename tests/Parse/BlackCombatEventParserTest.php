@@ -2,6 +2,10 @@
 
 namespace Tests\Promotion\BlackCombat;
 
+use Cable8mm\MmaScrapers\Enum\FightMethod;
+use Cable8mm\MmaScrapers\Enum\FightStatus;
+use Cable8mm\MmaScrapers\Enum\WeightClass;
+use Cable8mm\MmaScrapers\Enum\WinnerCorner;
 use Cable8mm\MmaScrapers\Parser\BlackCombatEventParser;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -41,5 +45,37 @@ class BlackCombatEventParserTest extends TestCase
         $event = $parser->parseEvent($html);
 
         $this->assertEquals('블랙컵 8강: 브라질 vs 일본', $event->name);
+    }
+
+    #[Test]
+    public function test_parse_fights()
+    {
+        $dir = __DIR__.'/../Fixtures/BlackCombat/blackcombat_event_287.html';
+
+        $html = file_get_contents($dir);
+
+        $parser = new BlackCombatEventParser();
+
+        $fights = $parser->parseFights($html);
+
+        $this->assertCount(10, $fights);
+
+        $this->assertEquals('Youssef Barakat', $fights[0]->redFighter->name);
+        $this->assertEquals('정영제', $fights[0]->blueFighter->name);
+        $this->assertEquals(FightStatus::FINISHED, $fights[0]->status);
+        $this->assertEquals(WeightClass::LIGHTWEIGHT, $fights[0]->weightClass);
+        $this->assertEquals(FightMethod::KO, $fights[0]->method);
+        $this->assertNull($fights[0]->round);
+        $this->assertNull($fights[0]->time);
+        $this->assertEquals(WinnerCorner::BLUE, $fights[0]->winnerCorner);
+
+        $this->assertEquals('Felipe Gheno', $fights[1]->redFighter->name);
+        $this->assertEquals('Mukai Rukiya', $fights[1]->blueFighter->name);
+        $this->assertEquals(FightStatus::FINISHED, $fights[1]->status);
+        $this->assertEquals(WeightClass::BANTAMWEIGHT, $fights[1]->weightClass);
+        $this->assertEquals(FightMethod::DECISION, $fights[1]->method);
+        $this->assertNull($fights[1]->round);
+        $this->assertNull($fights[1]->time);
+        $this->assertEquals(WinnerCorner::BLUE, $fights[1]->winnerCorner);
     }
 }
