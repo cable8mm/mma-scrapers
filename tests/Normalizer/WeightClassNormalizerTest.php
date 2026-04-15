@@ -22,4 +22,23 @@ class WeightClassNormalizerTest extends TestCase
 
         $this->assertNull(WeightClassNormalizer::normalize('unknown weight class'));
     }
+
+    #[Test]
+    public function test_normalize_example(): void
+    {
+        $texts = [
+            'LIGHTWEIGHT BOUT' => WeightClass::LIGHTWEIGHT,
+            'BANTAMWEIGHT BOUT' => WeightClass::BANTAMWEIGHT,
+            'MIDDLEWEIGHT BOUT' => WeightClass::MIDDLEWEIGHT,
+            'HEAVYWEIGHT BOUT' => WeightClass::HEAVYWEIGHT,
+            'WELTERWEIGHT BOUT' => WeightClass::WELTERWEIGHT,
+            'FEATHERWEIGHT BOUT' => WeightClass::FEATHERWEIGHT,
+            'FLYWEIGHT BOUT' => WeightClass::FLYWEIGHT,
+            '-100.5KG CATCHWEIGHT BOUT' => WeightClass::CATCHWEIGHT,
+        ];
+
+        foreach ($texts as $text => $weightClass) {
+            $this->assertEquals($weightClass, WeightClassNormalizer::normalize($text));
+        }
+    }
 }
