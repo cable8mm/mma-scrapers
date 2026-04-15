@@ -12,6 +12,7 @@ class FighterDTO
     *
     * @param string $name The name of the fighter.
     * @param string|null $nickname The fighter's nickname, if available.
+    * @param string|null $instagram The fighter's Instagram handle, if available.
     * @param string|null $teamname The name of the fighter's team or gym, if available.
     * @param string|null $height The fighter's height, if available.
     * @param int|null $win The number of wins the fighter has, if available.
@@ -22,6 +23,7 @@ class FighterDTO
     public function __construct(
         public string $name,
         public ?string $nickname = null,
+        public ?string $instagram = null,
         public ?string $teamname = null,
         public ?string $height = null,
         public ?int $win = null,

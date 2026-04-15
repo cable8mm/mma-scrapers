@@ -92,6 +92,7 @@ class BlackCombatEventParserTest extends TestCase
 
         $this->assertEquals('김명환', $fighter->name);
         $this->assertEquals('맘모스', $fighter->nickname);
+        $this->assertEquals('@official_mammoth', $fighter->instagram);
         $this->assertEquals('Extreme 익스트림 컴뱃', $fighter->teamname);
         $this->assertEquals(183, $fighter->height);
         $this->assertEquals(10, $fighter->win);

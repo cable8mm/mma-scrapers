@@ -151,6 +151,8 @@ class BlackCombatEventParser implements EventParserInterface
         $name = trim(explode(' ', $fighterInfo)[0]);
         $nickname = preg_replace('/.*"(.*)".*/', '$1', $fighterInfo);
 
+        $instagram = $crawler->filter('#container > div.sub_content.fighter > div > div > div > div.fighter_data > div.sns_link > a')->text();
+
         $teamname = $crawler->filter('#container > div.sub_content.fighter > div > div > div > div.fighter_data > div.data_team > b > a')->text();
 
         $heightText = $crawler->filter('#container > div.sub_content.fighter > div > div > div > div.fighter_data > div.data_bio > div.data_bio_height')->text();
@@ -171,6 +173,7 @@ class BlackCombatEventParser implements EventParserInterface
         $fighter = new FighterDTO(
             name: $name,
             nickname: $nickname,
+            instagram: $instagram,
             teamname: $teamname,
             height: $height,
             win: is_numeric($win) ? (int) $win : null,
