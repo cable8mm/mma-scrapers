@@ -78,4 +78,25 @@ class BlackCombatEventParserTest extends TestCase
         $this->assertNull($fights[1]->time);
         $this->assertEquals(WinnerCorner::BLUE, $fights[1]->winnerCorner);
     }
+
+    #[Test]
+    public function test_parse_fighter()
+    {
+        $dir = __DIR__.'/../Fixtures/BlackCombat/blackcombat_fighter_11958177.html';
+
+        $html = file_get_contents($dir);
+
+        $parser = new BlackCombatEventParser();
+
+        $fighter = $parser->parseFighter($html);
+
+        $this->assertEquals('김명환', $fighter->name);
+        $this->assertEquals('맘모스', $fighter->nickname);
+        $this->assertEquals('Extreme 익스트림 컴뱃', $fighter->teamname);
+        $this->assertEquals(183, $fighter->height);
+        $this->assertEquals(10, $fighter->win);
+        $this->assertEquals(4, $fighter->lose);
+        $this->assertEquals(0, $fighter->draw);
+        $this->assertEquals(292151, $fighter->sherdogId);
+    }
 }

@@ -1,0 +1,902 @@
+
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>블랙컴뱃</title>
+
+<link rel="stylesheet" href="https://www.blackcombat-official.com/theme/blackcombat/css/default.css?ver=2604051">
+<link rel="stylesheet" href="https://www.blackcombat-official.com/js/font-awesome/css/font-awesome.min.css?ver=2604051">
+<link rel="stylesheet" href="/theme/blackcombat/css/fighter.css?ver=2604051">
+<!--[if lte IE 8]>
+<script src="https://www.blackcombat-official.com/js/html5.js"></script>
+<![endif]-->
+<script>
+// 자바스크립트에서 사용하는 전역변수 선언
+var g5_url       = "https://www.blackcombat-official.com";
+var g5_bbs_url   = "https://www.blackcombat-official.com/bbs";
+var g5_is_member = "";
+var g5_is_admin  = "";
+var g5_is_mobile = "";
+var g5_bo_table  = "";
+var g5_sca       = "";
+var g5_editor    = "";
+var g5_cookie_domain = "";
+var g5_theme_shop_url = "https://www.blackcombat-official.com/theme/blackcombat/shop";
+var g5_shop_url = "https://www.blackcombat-official.com/shop";
+</script>
+
+<meta name="type" content="website" />
+<meta name="title" content="블랙컴뱃 - BLACKCOMBAT" />
+<meta name="description" content="Who is the king? The Revolution of MMA, Black Combat" />
+<meta name="keywords" content="블랙컴뱃, MMA, 이종격투기, 종합격투기, 주짓수, 격투대회, 체육관, MMA체육관" />
+<meta name="image" content="https://www.blackcombat-official.com/theme/blackcombat/img/logo.png" />
+<meta name="url" content="https://www.blackcombat-official.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="블랙컴뱃 - BLACKCOMBAT" />
+<meta property="og:description" content="Who is the king? The Revolution of MMA, Black Combat" />
+<meta property="og:keywords" content="블랙컴뱃, MMA, 이종격투기, 종합격투기, 주짓수, 격투대회, 체육관, MMA체육관" />
+<meta property="og:image" content="https://www.blackcombat-official.com/theme/blackcombat/img/logo.png" />
+<meta property="og:url" content="https://www.blackcombat-official.com/" />
+<link rel="canonical" href="https://www.blackcombat-official.com/">
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/img/blackcombat_favicon.png?v=20221017" />
+<link href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://www.blackcombat-official.com/js/jquery.menu.js?ver=2511112"></script>
+<script src="https://www.blackcombat-official.com/js/common.js?ver=2511112"></script>
+<script src="https://www.blackcombat-official.com/js/wrest.js?ver=2511112"></script>
+<script src="https://www.blackcombat-official.com/js/placeholders.min.js?ver=2511112"></script>
+</head>
+
+<body>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TNKR3YS1FL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TNKR3YS1FL');
+</script>
+
+<style>
+    html, body {
+        -webkit-text-size-adjust: none; /* 모바일 브라우저 자동 확대 방지 */
+        text-size-adjust: none;
+    }
+</style><style>
+    .live_mark{
+        position: absolute;
+        top: 13px;
+        padding: 2px 5px;
+        background-color: #000000;
+        color: #ffba3c;
+        font-size: 0.8rem;
+        border-radius: 4px;
+        line-height: 1rem;
+        width: 58px;
+        text-align: center;
+    }
+
+    .lang-dropdown {
+        position: relative;
+        display: inline-block;
+        min-width: 160px;
+        font-size: 14px;
+        z-index: 1001;
+    }
+
+    .lang_li{
+        margin: 9px 0px !important;
+    }
+
+    .lang-current {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        width: 100%;
+        height: 28px;
+        padding: 0 12px;
+        background: #212020;
+        color: #919191;
+        border: 1px solid #919191;
+        cursor: pointer;
+        box-sizing: border-box;
+    }
+
+    .lang-current:hover {
+        color: #fff;
+        border-color: #fff;
+    }
+
+    .lang-current-left {
+        display: flex !important;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+        margin-top: unset !important;
+        font-size: unset !important;
+    }
+
+    .lang-current-left span:last-child {
+        white-space: nowrap;
+    }
+
+    .lang-current-left span{
+        display: inline-block !important;
+        margin-top: unset !important;
+        font-size: unset !important;
+    }
+
+    .lang-list .fi{
+        font-size: 17px !important;
+        min-width: 17px;
+        max-width: 17px;
+    }
+
+    .lang-arrow {
+        font-size: 12px;
+        line-height: 1;
+        transition: transform 0.2s ease;
+    }
+
+    .lang-dropdown.open .lang-arrow {
+        transform: rotate(180deg);
+    }
+
+    .lang-list {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin: 4px 0 0 0;
+        padding: 4px 0;
+        list-style: none;
+        background: #212020;
+        border: 1px solid #919191;
+        box-sizing: border-box;
+    }
+
+    .lang-dropdown.open .lang-list {
+        display: block;
+    }
+
+    .lang-list li {
+        margin: 0 !important;
+        padding: 0;
+        float: unset !important;
+        font-size: unset !important;
+        line-height: unset !important;
+        border-right : unset !important;
+    }
+
+    .lang-list a {
+        display: flex !important;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        color: #919191;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .lang-list a:hover {
+        background: #2f2e2e;
+        color: #fff;
+    }
+
+    .lang-list a.active {
+        color: #fff;
+        font-weight: 600;
+    }
+</style>
+<!-- 상단 시작 { -->
+<div id="tnb" style="background:#212020;">
+    <div class="inner">
+        <ul id="hd_qnb">
+            <li>
+                <input type="text" class="search-value-input" style="background-color: #212020;color: #919191;border: 1px solid #919191;padding: 2px;width: 100px;margin-top: -6px;" />
+                <button onclick="searchPlayer(this)" style="margin-top: -6px; height: 27px; width: 40px; background-color: #111111; color: gray;">검색</button>
+            </li>
+                        <li><a href="https://www.blackcombat-official.com/shop/orderinquiry.php">비회원 주문조회</a></li>
+            <li><a href="https://www.blackcombat-official.com/bbs/register.php">회원가입</a></li>
+            <li><a href="https://www.blackcombat-official.com/bbs/login.php">로그인</a></li>
+                        
+            <li class="lang_li">
+                <div class="lang-dropdown" id="langDropdown">
+                    <button type="button" class="lang-current" id="langToggle" aria-haspopup="true" aria-expanded="false">
+                        <span class="lang-current-left">
+                            <span class="fi fi-kr"></span>
+                            <span>한국어</span>
+                        </span>
+                        <span class="lang-arrow">▼</span>
+                    </button>
+
+                    <ul class="lang-list" id="langList">
+                                                        <li>
+                                    <a href="#"
+                                    class="active"
+                                    data-lang="ko">
+                                        <span class="fi fi-kr"></span>
+                                        <span>한국어</span>
+                                    </a>
+                                </li>
+                                                        <li>
+                                    <a href="#"
+                                    class=""
+                                    data-lang="en">
+                                        <span class="fi fi-us"></span>
+                                        <span>English</span>
+                                    </a>
+                                </li>
+                                                        <li>
+                                    <a href="#"
+                                    class=""
+                                    data-lang="ja">
+                                        <span class="fi fi-jp"></span>
+                                        <span>日本語</span>
+                                    </a>
+                                </li>
+                                                        <li>
+                                    <a href="#"
+                                    class=""
+                                    data-lang="zh_cn">
+                                        <span class="fi fi-cn"></span>
+                                        <span>简体中文</span>
+                                    </a>
+                                </li>
+                                                        <li>
+                                    <a href="#"
+                                    class=""
+                                    data-lang="pt_br">
+                                        <span class="fi fi-br"></span>
+                                        <span>Português (Brasil)</span>
+                                    </a>
+                                </li>
+                                                        <li>
+                                    <a href="#"
+                                    class=""
+                                    data-lang="ru">
+                                        <span class="fi fi-ru"></span>
+                                        <span>Русский</span>
+                                    </a>
+                                </li>
+                                            </ul>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<script>
+
+    var ajax_url = window.location.origin + "/theme/blackcombat/shop";
+    function searchPlayer(){
+        let keyword = $(".search-value-input").val();
+        if(keyword === null || keyword === undefined || keyword === ""){
+            alert("검색어를 입력하세요.");
+            return;
+        }else if(keyword.length <= 1){
+            alert("검색어를 두 글자 이상 입력하세요.");
+            return;
+        }
+
+        $.ajax({
+            url: ajax_url + "/ajax.action.php",
+            type: "POST",
+            data: {"action":"get_player_info", "search_keyword":keyword},
+            dataType: "json",
+            async: true,
+            cache: false,
+            success: function(data, textStatus) {
+                gtag('event', 'player_search', {
+                    search_term: keyword
+                });
+                if(data.resultArray.length === 0){
+                    alert("검색된 선수가 없습니다.");
+                }else if(data.resultArray.length > 1){
+                    let message = "검색된 선수가 두 명 이상입니다.\n -";
+                    message += data.resultArray.map(item => item.fighter_name + " (" + item.fighter_ringname + ")").join("\n -");
+                    alert(message);
+                }else{
+                    location.href="https://www.blackcombat-official.com/fighter/"+data.resultArray[0].fighter_seq;
+                }
+            },
+            error : function(request, status, error){
+                console.log(error);
+                alert("false ajax :"+request.responseText);
+            }
+        });
+    }
+
+    $('.search-value-input').keypress(function(event) {
+        if (event.which === 13 || event.key === 'Enter') {
+            searchPlayer()
+        }
+    });
+</script>
+
+<div id="hd">
+    <h1 id="hd_h1">블랙컴뱃</h1>
+    <div id="skip_to_container"><a href="#container">본문 바로가기</a></div>
+
+    
+<!-- 팝업레이어 시작 { -->
+<div id="hd_pop">
+    <h2>팝업레이어 알림</h2>
+
+<span class="sound_only">팝업레이어 알림이 없습니다.</span></div>
+
+<script>
+$(function() {
+    $(".hd_pops_reject").click(function() {
+        var id = $(this).attr('class').split(' ');
+        var ck_name = id[1];
+        var exp_time = parseInt(id[2]);
+        $("#"+id[1]).css("display", "none");
+        set_cookie(ck_name, 1, exp_time, g5_cookie_domain);
+    });
+    $('.hd_pops_close').click(function() {
+        var idb = $(this).attr('class').split(' ');
+        $('#'+idb[1]).css('display','none');
+    });
+    $("#hd").css("z-index", 1000);
+});
+</script>
+<!-- } 팝업레이어 끝 -->
+    <div id="hd_wrapper">
+
+        <div id="logo">
+            <a href="https://www.blackcombat-official.com"><img src="https://www.blackcombat-official.com/img/logo.png" alt="블랙컴뱃"></a>
+        </div>
+
+        <div class="menus">
+            <div class="menu_items">
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/company.php" class="menu_item_anchor">COMPANY</a></div>
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/sponsors.php" class="menu_item_anchor">SPONSORS</a></div>
+                <div class="menu_item" style="position:relative">
+                                                                        <!-- <a href="https://www.blackcombat-official.com/shop/1733239478" class="menu_item_anchor ticket_link">TICKET</a> -->
+                                                    <a href="#" class="menu_item_anchor" onclick="location.href='https://hegemonyblack.com/goods/goods_view.php?goodsNo=1000000152'">TICKET</a>    
+                            <div class="live_mark">LIVE🔥</div>
+                            <!-- <a href="#" class="menu_item_anchor" onclick="alert('상품을 준비중입니다.');return false;">TICKET</a> -->
+                                                            </div>
+                <div class="menu_item"><a href="http://www.hegemonyblack.com/main/index.php" class="menu_item_anchor" target="_blank">STORE</a></div>
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/event.php?page=10" class="menu_item_anchor">EVENT</a></div>
+                
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/blackcup.php" class="menu_item_anchor">BLACK CUP</a></div>    
+                
+                <!-- <div class="menu_item"><a href="https://www.blackcombat-official.com/video" class="menu_item_anchor">VIDEO</a></div> -->
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/ranking.php?type=fighter" class="menu_item_anchor">RANKING</a></div>
+                <!-- <div class="menu_item"><a href="https://www.blackcombat-official.com/cl.php" class="menu_item_anchor">C.L</a></div> -->
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/community" class="menu_item_anchor">COMMUNITY</a></div>
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/gym.php" class="menu_item_anchor">GYM</a></div>
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/rules.php" class="menu_item_anchor">RULES</a></div>
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/doping.php" class="menu_item_anchor">DOPING</a></div>
+                <div class="menu_item"><a href="https://www.blackcombat-official.com/awards.php" class="menu_item_anchor">GLORIA AWARDS</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hd_bg left"></div>
+    <div class="hd_bg right"></div>
+</div>
+<!-- } 상단 끝 -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var lang = 'ko';
+
+        if (lang === 'ru') {
+            var items = document.querySelectorAll('.menu_item_anchor');
+            for (var i = 0; i < items.length; i++) {
+                items[i].style.fontSize = '15px';
+            }
+        }
+    });
+</script>
+
+<hr>
+
+<script>
+    (function () {
+        var dropdown = document.getElementById('langDropdown');
+        var toggle = document.getElementById('langToggle');
+        var list = document.getElementById('langList');
+        var links = list.querySelectorAll('a[data-lang]');
+
+        function openDropdown() {
+            dropdown.classList.add('open');
+            toggle.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeDropdown() {
+            dropdown.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+
+        function toggleDropdown() {
+            if (dropdown.classList.contains('open')) {
+                closeDropdown();
+            } else {
+                openDropdown();
+            }
+        }
+
+        toggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            toggleDropdown();
+        });
+
+        for (var i = 0; i < links.length; i++) {
+            links[i].addEventListener('click', function (e) {
+                e.preventDefault();
+
+                var lang = this.getAttribute('data-lang');
+                var url = new URL(window.location.href);
+
+                url.searchParams.set('lang', lang);
+                window.location.href = url.toString();
+            });
+        }
+
+        document.addEventListener('click', function (e) {
+            if (!dropdown.contains(e.target)) {
+                closeDropdown();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeDropdown();
+            }
+        });
+    })();
+</script>
+<!-- 콘텐츠 시작 { -->
+<div id="wrapper">
+    <div id="container_wr">
+   
+    <div id="container">
+            <style>
+        .match_result{
+            width:40px;
+            text-align:center;
+        }
+        .game_name{
+            display: inline-block;
+            width:150px;
+        }
+        .winner_name{
+            color: #ffba3c;
+            font-weight:bold;
+        }
+    </style>
+    <style>
+    .match_list li{
+        display:flex;
+    }
+
+    .match_list li.hidden{
+        display:none;    
+    }
+
+    .match_list li#toggleButton{
+        justify-content: center;
+        cursor:pointer;
+    }
+
+    #album_container {
+      cursor: pointer;
+    }
+
+    #album {
+      width: 30px;
+      height: 30px;
+      background-image: url('https://www.blackcombat-official.com/theme/blackcombat/img/cd.png'); /* 원하는 이미지 */
+      background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      border-radius: 50%;
+    }
+
+    #album_title{
+        font-size:1rem;
+        font-weight:bold;
+        font-style:italic;
+    }
+
+    .spinning {
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* new */
+    .fighter_page .data_name span {
+        font-size:unset;
+    }
+    .fighter_page .fighter_match .match_list li { 
+        margin-bottom: unset; 
+        align-items: flex-start; /* 위쪽 맞춤 */
+        height:30px;
+        white-space: nowrap;
+        font-size:14px;
+    }
+
+    .fighter_page .fighter_match .match_list .match_result {
+        display: inline-block;
+        font-weight: bold;
+        padding:unset;
+        margin-left:unset;
+        margin: 0px 6px;
+    }
+
+    span.fi{
+            border-radius: 4px;
+    }
+    .game_name {
+        display: inline-block;
+        text-align: left;     /* 오른쪽 끝 정렬 */
+        padding-right: 6px;    /* : 여백 */
+        flex: 0 0 90px;
+    }
+
+    .game_name span {
+        display:inline-block;
+    }
+
+    .game_name::after {
+        content: ":";          /* 자동으로 콜론 붙이기 */
+        margin-left: 2px;
+    }
+
+    .match_info{
+        display: flex;
+        justify-content: flex-start;
+        gap: 4px;
+    }
+
+
+    
+</style>
+
+<div class="sub_content fighter" style="background-color: #000; padding-bottom: 30px;">
+        <div class="sub_container">
+            <div class="fighter_page">
+
+                    <div class="fighter_info">
+                        <div class="fighter_data">
+
+                                                            <div id="album_container" style="display:flex; margin-bottom:15px;">
+                                        <div id="yt-container" style="display:none"></div>
+                                        <div id="album"></div>
+                                        <div id="album_title" style="margin-left:10px;">각시탈</div>
+                                    </div>
+                            
+                                
+                            <div class="data_tags">
+                                            <span>헤비급 #3</span>
+                                                                    </div>
+                            <div class="data_name">
+                                <span class="fi fi-kr"></span> 김명환<br />
+                                <span class="data_ringname">"맘모스"</span>
+                                        <span class="data_age">AGE : 28</span> <!-- 날짜계산해서넣기 -->
+                            </div>
+                            <div class="sns_link">
+                                                            <a href="https://www.blackcombat-official.com/theme/blackcombat/api/insta_redirect.php?fighter_seq=11958177" target="_blank"  style="font-size:15px;">
+                                    <img src="https://www.blackcombat-official.com/theme/blackcombat/img/instagram.svg" width="25px" />
+                                    @official_mammoth                                </a>
+                                                        </div>
+                            <div class="data_team">
+                                TEAM : <b><a href="/team.php?page=7" style="color:white;">Extreme 익스트림 컴뱃</a></b>
+                            </div>
+                            <div class="data_bio">
+                                <div class="data_bio_height">
+                                    <div class="mini">HEIGHT</div>
+                                    183cm                                </div>
+                                <div class="data_bio_weight">
+                                    <div class="mini">WEIGHT</div>
+                                    -                                </div>
+                            </div>
+                            <div class="data_record">
+                                <div class="data_record_win">
+                                    10 <div class="mini">Win</div>
+                                </div>
+                                <div class="data_record_draw">
+                                    4 <div class="mini">Loss</div>
+                                </div>
+                                <div class="data_record_lose">
+                                    0 <div class="mini">Draw</div>
+                                </div>
+                            </div>
+
+                                                                    <div class="fighter_match" style="margin:30px 0px;">
+                                            <div class="match_title">
+                                                CERTIFIED BY &nbsp &nbsp <a target="_blank" href="https://www.sherdog.com/fighter/Myung-Hwan-Kim-292151"><img style="margin-bottom: 5px;" width="100px" src="https://www.blackcombat-official.com/theme/blackcombat/img/sherdog_logo.PNG" /></a>
+                                            </div>
+                                        </div>    
+                                                                                            
+                            
+                            <div class="fighter_match">
+                                <div class="match_title">
+                                    LATEST MATCHES
+                                </div>
+                                <div class="match_list">
+                                    <ul>
+                                                                                    <li class="">
+                                                    <div class="game_name">
+                                                        <a href="https://www.blackcombat-official.com/eventDetail.php?eventSeq=286" style="color:#FFFFFF">
+                                                            <b><span style='color:rgba(255, 255, 255, 0.6)'>한국(α) vs 미국 </span></b> 
+                                                        </a>
+                                                    </div>
+                                                    <div class="match_info">
+                                                    <a href="https://youtu.be/YJphYa_XsHY?si=BpzR2Jyqwp2vB4C6"><img style="width:21px;" src="https://www.blackcombat-official.com/theme/blackcombat/img/youtube_icon.png" /></a><span class='match_result win'>Win</span>                                                    <a href="https://www.blackcombat-official.com/fighter/11958177" style="color:white">
+                                                        <span class="fi fi-kr"></span> <span class='winner_name' >김명환</span>
+                                                    </a>
+                                                    vs
+                                                    <a href="https://www.blackcombat-official.com/fighter/84407642" style="color:white">
+                                                        <span class="fi fi-us"></span> <span  >O'Shay Jordan</span>
+                                                    </a>
+                                                    <span style="margin-left:10px; font-size:0.7rem; display:contents;">3R Unanimous Decision</span>
+                                                    </div>
+                                                </li>
+                                                                                    <li class="">
+                                                    <div class="game_name">
+                                                        <a href="https://www.blackcombat-official.com/eventDetail.php?eventSeq=279" style="color:#FFFFFF">
+                                                            <b><span style='color:rgba(255, 255, 255, 0.6)'>C.L 02 - #13 </span></b> 
+                                                        </a>
+                                                    </div>
+                                                    <div class="match_info">
+                                                    <a href="https://www.youtube.com/watch?v=l8wpFkt0quk"><img style="width:21px;" src="https://www.blackcombat-official.com/theme/blackcombat/img/youtube_icon.png" /></a><span class='match_result win'>Win</span>                                                    <a href="https://www.blackcombat-official.com/fighter/11958177" style="color:white">
+                                                        <span class="fi fi-kr"></span> <span class='winner_name' >김명환</span>
+                                                    </a>
+                                                    vs
+                                                    <a href="https://www.blackcombat-official.com/fighter/66669714" style="color:white">
+                                                        <span class="fi fi-kr"></span> <span  >정민훈</span>
+                                                    </a>
+                                                    <span style="margin-left:10px; font-size:0.7rem; display:contents;">1R 3:24 KO</span>
+                                                    </div>
+                                                </li>
+                                                                                    <li class="">
+                                                    <div class="game_name">
+                                                        <a href="https://www.blackcombat-official.com/eventDetail.php?eventSeq=265" style="color:#FFFFFF">
+                                                            <b><span >블랙컴뱃 11 </span></b> 
+                                                        </a>
+                                                    </div>
+                                                    <div class="match_info">
+                                                    <a href="https://youtu.be/svf-e8-IVbQ?si=-pLdSpW0K_TScnGH"><img style="width:21px;" src="https://www.blackcombat-official.com/theme/blackcombat/img/youtube_icon.png" /></a><span class='match_result lose'>Loss</span>                                                    <a href="https://www.blackcombat-official.com/fighter/79434480" style="color:white">
+                                                        <span class="fi fi-us"></span> <span class='winner_name' >록키 마르티네즈</span>
+                                                    </a>
+                                                    vs
+                                                    <a href="https://www.blackcombat-official.com/fighter/11958177" style="color:white">
+                                                        <span class="fi fi-kr"></span> <span  >김명환</span>
+                                                    </a>
+                                                    <span style="margin-left:10px; font-size:0.7rem; display:contents;">3R Unanimous Decision</span>
+                                                    </div>
+                                                </li>
+                                                                                    <li class="">
+                                                    <div class="game_name">
+                                                        <a href="https://www.blackcombat-official.com/eventDetail.php?eventSeq=236" style="color:#FFFFFF">
+                                                            <b><span style='color:rgba(255, 255, 255, 0.6)'>라이즈 2 </span></b> 
+                                                        </a>
+                                                    </div>
+                                                    <div class="match_info">
+                                                    <a href="http://youtu.be/AUxrtAJBf1Y/"><img style="width:21px;" src="https://www.blackcombat-official.com/theme/blackcombat/img/youtube_icon.png" /></a><span class='match_result win'>Win</span>                                                    <a href="https://www.blackcombat-official.com/fighter/11958177" style="color:white">
+                                                        <span class="fi fi-kr"></span> <span class='winner_name' >김명환</span>
+                                                    </a>
+                                                    vs
+                                                    <a href="https://www.blackcombat-official.com/fighter/88392103" style="color:white">
+                                                        <span class="fi fi-jp"></span> <span  >이나다 마사시</span>
+                                                    </a>
+                                                    <span style="margin-left:10px; font-size:0.7rem; display:contents;">2R 4:50 TKO</span>
+                                                    </div>
+                                                </li>
+                                                                                                            </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fighter_img">
+                            <img src='https://www.blackcombat-official.com/theme/blackcombat/img/fighter_new/11958177/11958177_detail.webp?v=260317193038' 
+                                onerror="this.src='https://www.blackcombat-official.com/theme/blackcombat/img/fighter_new/fighter_full_blank.png'"
+                            />  
+                        </div>
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
+    <div class="sub_content">
+        <div class="sub_container">
+            <div class="fighter_news_page">
+                <div class="news_page_title">
+                    LASTEST NEWS
+                </div>
+                <div class="news_page_list">
+                    <ul>
+                        <li>
+                            <a href="javascript:">
+                                <img src="https://www.blackcombat-official.com/theme/blackcombat/img/fighter/fighter_news_blank.jpg" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:">
+                                <img src="https://www.blackcombat-official.com/theme/blackcombat/img/fighter/fighter_news_blank.jpg" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:">
+                                <img src="https://www.blackcombat-official.com/theme/blackcombat/img/fighter/fighter_news_blank.jpg" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+<script src="https://www.youtube.com/iframe_api"></script>
+<script type="text/javascript">
+    let isMobile = '';
+    let foldFlag = false;
+    let foldToggle = () => {
+        const toggleButton = document.querySelector(`.match_list li#toggleButton`);
+        const listContainer = document.querySelector(`.match_list`);
+        const hiddenItems = document.querySelectorAll(`.match_list li.hidden`);
+
+        if (foldFlag) {
+            listContainer.style.maxHeight = '125px';
+            hiddenItems.forEach(item => {
+                item.style.display = 'none';
+            });
+            toggleButton.textContent = '▼ 더보기';
+        } else {
+                let maxheight = (170 + 30*hiddenItems.length);
+            listContainer.style.maxHeight = `${maxheight}px`;
+            hiddenItems.forEach(item => {
+                item.style.display = 'flex';
+            });
+            toggleButton.textContent = '▲ 접기';
+        }
+        foldFlag = !foldFlag;
+    }
+</script>
+
+    
+            <script type="text/javascript">
+                let player;
+                let isPlaying = false;
+
+                function onYouTubeIframeAPIReady() {
+                        player = new YT.Player('yt-container', {
+                            height: '0',
+                            width: '0',
+                            videoId: 'RMHu9C4WEAc',
+                            playerVars: {
+                            'autoplay': 0,
+                            'controls': 0,
+                            'mute': 0
+                            },
+                            events: {
+                            'onReady': function (event) {
+                            }
+                            }
+                        });
+                    }
+
+                const albumContainer = document.getElementById("album_container");
+                const album = document.getElementById("album");
+
+                albumContainer.addEventListener("click", () => {
+                    tryPlayOrPause(0);
+                });
+
+                let showPlayer = false;
+                function tryPlayOrPause(retryCount) {
+                    const maxRetries = 30; // 최대 3초 (100ms * 30)
+
+                    if (!player || typeof player.playVideo !== 'function') {
+                        if (retryCount < maxRetries) {
+                            setTimeout(() => {
+                                tryPlayOrPause(retryCount + 1);
+                            }, 300);
+                        } else {
+                            alert("음악 재생에 실패하였습니다. 새로고침 후 다시 시도해주세요.")
+                            console.warn("유튜브 플레이어 초기화 실패 (재시도 초과)");
+                        }
+                        return;
+                    }
+
+                    if(!showPlayer){
+
+                        let ytContainer = $("#yt-container");
+                        if(isMobile === '1'){
+                            ytContainer.css({'display': 'block', 'width': '100px', 'height': '50px', 'position': 'absolute', 'top': '130px'})
+                        }else{
+                            ytContainer.css({'display': 'block', 'width': '100px', 'height': '50px', 'position': 'absolute', 'top': '20px'})
+                        }
+                    }
+
+                    if (isPlaying) {
+                        player.pauseVideo();
+                        album.classList.remove("spinning");
+                    } else {
+                        player.playVideo();
+                        album.classList.add("spinning");
+                    }
+                    isPlaying = !isPlaying;
+                }
+            </script>
+    
+
+
+    </div>
+</div>
+
+</div>
+<!-- } 콘텐츠 끝 -->
+
+<hr>
+
+<!-- 하단 시작 { -->
+<div id="ft">
+    <div class="footer_social">
+        <div class="footer_social_title"><img src="https://www.blackcombat-official.com/theme/blackcombat/img/footer_social_title.png" /></div>
+
+        <div class="footer_social_items">
+            <div class="footer_social_item"><a href="https://www.youtube.com/channel/UC_IYjiKaQBPq-K1Iq4sM-UQ" class="footer_social_item_anchor" target="_blank"><img src="https://www.blackcombat-official.com/theme/blackcombat/img/footer_social_youtube_icon.png" /></a></div>
+            <div class="footer_social_item"><a href="https://www.instagram.com/blackcombat_official/" class="footer_social_item_anchor" target="_blank"><img src="https://www.blackcombat-official.com/theme/blackcombat/img/footer_social_instagram_icon.png" /></a></div>
+        </div>
+    </div>
+
+    <div class="footer_copyright">
+        <p style="padding-bottom:5px;">회사명 : 주식회사 이데아 파라곤</p>
+        <p style="padding-bottom:5px;">주소 : 서울시 성동구 서울숲2길 35</p>
+        <p style="padding-bottom:5px;">사업자 등록번호 : 682-81-02925</p>
+        <p style="padding-bottom:5px;">대표 : 박평화</p>
+        <p style="padding-bottom:5px;">전화 : 070-5222-9146</p>
+        <p style="padding-bottom:5px;">통신판매업신고번호 : 2025-서울성동-1110</p>
+        <p style="padding-bottom:10px;">개인정보 보호책임자 : 박영광 (ideaparagon.official@gmail.com)</p>
+
+        <p>Blackcombat © 2026. All Rights Reserved.</p>
+    </div>
+
+    <button type="button" id="top_btn">
+    	<i class="fa fa-arrow-up" aria-hidden="true"></i><span class="sound_only">상단으로</span>
+    </button>
+
+    <script>
+    $(function() {
+        $("#top_btn").on("click", function() {
+            $("html, body").animate({scrollTop:0}, '500');
+            return false;
+        });
+    });
+    </script>
+</div>
+
+
+<!-- } 하단 끝 -->
+
+<script>
+$(function() {
+    // 폰트 리사이즈 쿠키있으면 실행
+    font_resize("container", get_cookie("ck_font_resize_rmv_class"), get_cookie("ck_font_resize_add_class"));
+});
+</script>
+
+
+
+
+</body>
+</html>
