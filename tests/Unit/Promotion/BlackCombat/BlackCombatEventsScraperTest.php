@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Promotion\BlackCombat;
+namespace Tests\Unit\Promotion\BlackCombat;
 
 use Cable8mm\MmaScrapers\Contract\HttpClientInterface;
-use Cable8mm\MmaScrapers\Parser\BlackCombatEventParser;
+use Cable8mm\MmaScrapers\Parser\BlackCombatParser;
 use Cable8mm\MmaScrapers\Promotion\BlackCombat\BlackCombatEventsScraper;
 use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -17,7 +17,7 @@ class BlackCombatEventsScraperTest extends TestCase
     #[AllowMockObjectsWithoutExpectations]
     public function test_parse_events()
     {
-        $dir = __DIR__.'/../../Fixtures/BlackCombat/blackcombat_events.html';
+        $dir = __DIR__.'/../../../Fixtures/BlackCombat/blackcombat_events.html';
 
         $html = file_get_contents($dir);
 
@@ -27,7 +27,7 @@ class BlackCombatEventsScraperTest extends TestCase
 
         $scraper = new BlackCombatEventsScraper(
             $http,
-            new BlackCombatEventParser()
+            new BlackCombatParser()
         );
 
         $events = $scraper->scrape();

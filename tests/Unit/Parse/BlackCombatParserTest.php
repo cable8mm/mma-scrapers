@@ -1,27 +1,26 @@
 <?php
 
-namespace Tests\Promotion\BlackCombat;
+namespace Tests\Unit\Parse;
 
 use Cable8mm\MmaScrapers\Enum\FightMethod;
 use Cable8mm\MmaScrapers\Enum\FightStatus;
 use Cable8mm\MmaScrapers\Enum\WeightClass;
-use Cable8mm\MmaScrapers\Enum\WinnerCorner;
-use Cable8mm\MmaScrapers\Parser\BlackCombatEventParser;
+use Cable8mm\MmaScrapers\Parser\BlackCombatParser;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(BlackCombatEventParser::class)]
-class BlackCombatEventParserTest extends TestCase
+#[CoversClass(BlackCombatParser::class)]
+class BlackCombatParserTest extends TestCase
 {
     #[Test]
     public function test_parse_events()
     {
-        $dir = __DIR__.'/../Fixtures/BlackCombat/blackcombat_events.html';
+        $dir = __DIR__.'/../../Fixtures/BlackCombat/blackcombat_events.html';
 
         $html = file_get_contents($dir);
 
-        $parser = new BlackCombatEventParser();
+        $parser = new BlackCombatParser();
 
         $events = $parser->parseEvents($html);
 
@@ -36,11 +35,11 @@ class BlackCombatEventParserTest extends TestCase
     #[Test]
     public function test_parse_event()
     {
-        $dir = __DIR__.'/../Fixtures/BlackCombat/blackcombat_event_287.html';
+        $dir = __DIR__.'/../../Fixtures/BlackCombat/blackcombat_event_287.html';
 
         $html = file_get_contents($dir);
 
-        $parser = new BlackCombatEventParser();
+        $parser = new BlackCombatParser();
 
         $event = $parser->parseEvent($html);
 
@@ -50,11 +49,11 @@ class BlackCombatEventParserTest extends TestCase
     #[Test]
     public function test_parse_fights()
     {
-        $dir = __DIR__.'/../Fixtures/BlackCombat/blackcombat_event_287.html';
+        $dir = __DIR__.'/../../Fixtures/BlackCombat/blackcombat_event_287.html';
 
         $html = file_get_contents($dir);
 
-        $parser = new BlackCombatEventParser();
+        $parser = new BlackCombatParser();
 
         $fights = $parser->parseFights($html);
 
@@ -67,7 +66,7 @@ class BlackCombatEventParserTest extends TestCase
         $this->assertEquals(FightMethod::KO, $fights[0]->method);
         $this->assertNull($fights[0]->round);
         $this->assertNull($fights[0]->time);
-        $this->assertEquals(WinnerCorner::BLUE, $fights[0]->winner);
+        $this->assertEquals($fights[0]->blueFighter, $fights[0]->winner);
 
         $this->assertEquals('Felipe Gheno', $fights[1]->redFighter->name);
         $this->assertEquals('Mukai Rukiya', $fights[1]->blueFighter->name);
@@ -76,17 +75,17 @@ class BlackCombatEventParserTest extends TestCase
         $this->assertEquals(FightMethod::DECISION, $fights[1]->method);
         $this->assertNull($fights[1]->round);
         $this->assertNull($fights[1]->time);
-        $this->assertEquals(WinnerCorner::BLUE, $fights[1]->winner);
+        $this->assertEquals($fights[1]->blueFighter, $fights[1]->winner);
     }
 
     #[Test]
     public function test_parse_fighter()
     {
-        $dir = __DIR__.'/../Fixtures/BlackCombat/blackcombat_fighter_11958177.html';
+        $dir = __DIR__.'/../../Fixtures/BlackCombat/blackcombat_fighter_11958177.html';
 
         $html = file_get_contents($dir);
 
-        $parser = new BlackCombatEventParser();
+        $parser = new BlackCombatParser();
 
         $fighter = $parser->parseFighter($html);
 
