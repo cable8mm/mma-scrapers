@@ -67,7 +67,7 @@ class BlackCombatEventParserTest extends TestCase
         $this->assertEquals(FightMethod::KO, $fights[0]->method);
         $this->assertNull($fights[0]->round);
         $this->assertNull($fights[0]->time);
-        $this->assertEquals(WinnerCorner::BLUE, $fights[0]->winnerCorner);
+        $this->assertEquals(WinnerCorner::BLUE, $fights[0]->winner);
 
         $this->assertEquals('Felipe Gheno', $fights[1]->redFighter->name);
         $this->assertEquals('Mukai Rukiya', $fights[1]->blueFighter->name);
@@ -76,7 +76,7 @@ class BlackCombatEventParserTest extends TestCase
         $this->assertEquals(FightMethod::DECISION, $fights[1]->method);
         $this->assertNull($fights[1]->round);
         $this->assertNull($fights[1]->time);
-        $this->assertEquals(WinnerCorner::BLUE, $fights[1]->winnerCorner);
+        $this->assertEquals(WinnerCorner::BLUE, $fights[1]->winner);
     }
 
     #[Test]
