@@ -36,7 +36,7 @@ FighterScraper
 ```txt
 BlackCombatScraper
    ↓
-BlackCombatEventParser
+BlackCombatParser
    ↓
 BlackCombatFightParser
    ↓

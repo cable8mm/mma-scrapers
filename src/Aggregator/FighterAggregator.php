@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\MmaScrapers\Aggregators;
+namespace Cable8mm\MmaScrapers\Aggregator;
 
 use Cable8mm\MmaScrapers\DTO\FighterDTO;
 
