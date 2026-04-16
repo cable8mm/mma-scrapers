@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\MmaScrapers\Matchers;
+namespace Cable8mm\MmaScrapers\Matcher;
 
 use Cable8mm\MmaScrapers\DTO\FighterDTO;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\MmaScrapers\Deduplicators;
+namespace Cable8mm\MmaScrapers\Deduplicator;
 
 use Cable8mm\MmaScrapers\DTO\FightDTO;
 
