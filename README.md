@@ -2,7 +2,14 @@
 
 [![build & tests](https://github.com/cable8mm/mma-scrapers/actions/workflows/run-tests.yml/badge.svg)](https://github.com/cable8mm/mma-scrapers/actions/workflows/run-tests.yml)
 [![coding style](https://github.com/cable8mm/mma-scrapers/actions/workflows/code-style.yml/badge.svg)](https://github.com/cable8mm/mma-scrapers/actions/workflows/code-style.yml)
-[![minimum PHP version](https://img.shields.io/badge/php-%5E8.3-8892BF?logo=php)](https://github.com/cable8mm/mma-scrapers)
+[![minimum PHP version](https://img.shields.io/badge/php-%5E8.4-8892BF?logo=php)](https://github.com/cable8mm/mma-scrapers)
+
+## Functions
+
+- [x] multi-source aggregator
+- [x] identity resolution
+- [x] normalized DB
+- [x] 확장 가능 구조
 
 ## Installation
 
