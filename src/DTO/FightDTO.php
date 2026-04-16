@@ -18,23 +18,26 @@ class FightDTO
      *
      * @param FighterDTO $redFighter Red Fighter information.
      * @param FighterDTO $blueFighter Blue Fighter information.
+     * @param Source $source The source from which the fight data was scraped.
      * @param FightStatus|null $status The status of the fight (e.g., scheduled, completed).
      * @param WeightClass|null $weightClass The weight class of the fight (e.g., Lightweight, Middleweight).
      * @param FightMethod|null $method The method of victory (e.g., KO, Submission).
      * @param int|null $round The round in which the fight ended.
      * @param string|null $time The time at which the fight ended in the final round.
      * @param WinnerCorner|null $winner The corner of the winning fighter (red or blue).
+     * @param \DateTimeImmutable|null $fightDate The date of the fight.
      */
     public function __construct(
         public FighterDTO $redFighter,
         public FighterDTO $blueFighter,
+        public Source $source,
         public ?FightStatus $status = null,
         public ?WeightClass $weightClass = null,
         public ?FightMethod $method = null,
         public ?int $round = null,
         public ?string $time = null,
         public ?WinnerCorner $winner = null,
-        public Source $source
+        public ?\DateTimeImmutable $fightDate = null
     ) {
     }
 }
