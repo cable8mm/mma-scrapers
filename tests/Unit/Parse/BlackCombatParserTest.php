@@ -5,7 +5,6 @@ namespace Tests\Unit\Parse;
 use Cable8mm\MmaScrapers\Enum\FightMethod;
 use Cable8mm\MmaScrapers\Enum\FightStatus;
 use Cable8mm\MmaScrapers\Enum\WeightClass;
-use Cable8mm\MmaScrapers\Enum\WinnerCorner;
 use Cable8mm\MmaScrapers\Parser\BlackCombatParser;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -67,7 +66,7 @@ class BlackCombatParserTest extends TestCase
         $this->assertEquals(FightMethod::KO, $fights[0]->method);
         $this->assertNull($fights[0]->round);
         $this->assertNull($fights[0]->time);
-        $this->assertEquals(WinnerCorner::BLUE, $fights[0]->winner);
+        $this->assertEquals($fights[0]->blueFighter, $fights[0]->winner);
 
         $this->assertEquals('Felipe Gheno', $fights[1]->redFighter->name);
         $this->assertEquals('Mukai Rukiya', $fights[1]->blueFighter->name);
@@ -76,7 +75,7 @@ class BlackCombatParserTest extends TestCase
         $this->assertEquals(FightMethod::DECISION, $fights[1]->method);
         $this->assertNull($fights[1]->round);
         $this->assertNull($fights[1]->time);
-        $this->assertEquals(WinnerCorner::BLUE, $fights[1]->winner);
+        $this->assertEquals($fights[1]->blueFighter, $fights[1]->winner);
     }
 
     #[Test]

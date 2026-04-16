@@ -9,7 +9,6 @@ use Cable8mm\MmaScrapers\DTO\FighterDTO;
 use Cable8mm\MmaScrapers\Enum\FightMethod;
 use Cable8mm\MmaScrapers\Enum\FightStatus;
 use Cable8mm\MmaScrapers\Enum\Source;
-use Cable8mm\MmaScrapers\Enum\WinnerCorner;
 use Cable8mm\MmaScrapers\Normalizer\WeightClassNormalizer;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -96,11 +95,11 @@ class BlackCombatParser implements EventParserInterface
 
             $winner = null;
             if ($node->matches('div:nth-child(1) > a > div')) {
-                $winner = WinnerCorner::RED;
+                $winner = $red;
             }
 
             if ($node->matches('div:nth-child(3) > a > div')) {
-                $winner = WinnerCorner::BLUE;
+                $winner = $blue;
             }
 
             $status = $winner ? FightStatus::FINISHED : FightStatus::SCHEDULED;
@@ -120,9 +119,9 @@ class BlackCombatParser implements EventParserInterface
                 : null;
 
             if ($node->filter('.fighter.red.winner')->count()) {
-                $winner = WinnerCorner::RED;
+                $winner = $red;
             } elseif ($node->filter('.fighter.blue.winner')->count()) {
-                $winner = WinnerCorner::BLUE;
+                $winner = $blue;
             }
 
             $fights[] = new FightDTO(

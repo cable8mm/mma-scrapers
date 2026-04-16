@@ -4,7 +4,6 @@ namespace Cable8mm\MmaScrapers\Aggregator;
 
 use Cable8mm\MmaScrapers\DTO\FightDTO;
 use Cable8mm\MmaScrapers\DTO\FighterDTO;
-use Cable8mm\MmaScrapers\Enum\WinnerCorner;
 
 class FightAggregator
 {
@@ -51,7 +50,7 @@ class FightAggregator
     /**
      * winner 결정 로직 (🔥 중요)
      */
-    private function pickWinner(array $fights): ?WinnerCorner
+    private function pickWinner(array $fights): ?FighterDTO
     {
         // 1️⃣ source priority 순으로 확인
         foreach ($fights as $fight) {
