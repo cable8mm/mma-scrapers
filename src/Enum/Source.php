@@ -3,11 +3,14 @@
 namespace Cable8mm\MmaScrapers\Enum;
 
 /**
- * Enum representing the source of the scraped data.
+ * Enum representing the source of the scraped data. The values indicate the priority of the sources, with higher values representing more reliable sources.
+ * - SHERDOG: 3 (most reliable)
+ * - TAPOLOGY: 2
+ * - OFFICIAL: 1 (least reliable)
  */
-enum Source: string
+enum Source: int
 {
-    case OFFICIAL = 'official';
-    case TAPOLOGY = 'tapology';
-    case SHERDOG = 'sherdog';
+    case SHERDOG = 3;
+    case TAPOLOGY = 2;
+    case OFFICIAL = 1;
 }

@@ -8,6 +8,7 @@ use Cable8mm\MmaScrapers\DTO\FightDTO;
 use Cable8mm\MmaScrapers\DTO\FighterDTO;
 use Cable8mm\MmaScrapers\Enum\FightMethod;
 use Cable8mm\MmaScrapers\Enum\FightStatus;
+use Cable8mm\MmaScrapers\Enum\Source;
 use Cable8mm\MmaScrapers\Enum\WinnerCorner;
 use Cable8mm\MmaScrapers\Normalizer\WeightClassNormalizer;
 use Symfony\Component\DomCrawler\Crawler;
@@ -134,7 +135,8 @@ class BlackCombatEventParser implements EventParserInterface
                 method: $method,
                 round: $round,
                 time: $time,
-                winnerCorner: $winner
+                winner: $winner,
+                source: Source::OFFICIAL
             );
         });
 

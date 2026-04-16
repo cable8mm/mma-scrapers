@@ -4,6 +4,7 @@ namespace Cable8mm\MmaScrapers\DTO;
 
 use Cable8mm\MmaScrapers\Enum\FightMethod;
 use Cable8mm\MmaScrapers\Enum\FightStatus;
+use Cable8mm\MmaScrapers\Enum\Source;
 use Cable8mm\MmaScrapers\Enum\WeightClass;
 use Cable8mm\MmaScrapers\Enum\WinnerCorner;
 
@@ -22,7 +23,7 @@ class FightDTO
      * @param FightMethod|null $method The method of victory (e.g., KO, Submission).
      * @param int|null $round The round in which the fight ended.
      * @param string|null $time The time at which the fight ended in the final round.
-     * @param WinnerCorner|null $winnerCorner The corner of the winning fighter (red or blue).
+     * @param WinnerCorner|null $winner The corner of the winning fighter (red or blue).
      */
     public function __construct(
         public FighterDTO $redFighter,
@@ -32,7 +33,8 @@ class FightDTO
         public ?FightMethod $method = null,
         public ?int $round = null,
         public ?string $time = null,
-        public ?WinnerCorner $winnerCorner = null
+        public ?WinnerCorner $winner = null,
+        public Source $source
     ) {
     }
 }
