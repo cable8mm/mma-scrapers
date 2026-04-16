@@ -128,6 +128,7 @@ class BlackCombatEventParser implements EventParserInterface
             $fights[] = new FightDTO(
                 redFighter: $red,
                 blueFighter: $blue,
+                source: Source::OFFICIAL,
                 status: $status,
                 weightClass: $weightText
                     ? WeightClassNormalizer::normalize($weightText)
@@ -135,8 +136,7 @@ class BlackCombatEventParser implements EventParserInterface
                 method: $method,
                 round: $round,
                 time: $time,
-                winner: $winner,
-                source: Source::OFFICIAL
+                winner: $winner
             );
         });
 
