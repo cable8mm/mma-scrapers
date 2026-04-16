@@ -13,7 +13,7 @@ use Cable8mm\MmaScrapers\Enum\WinnerCorner;
 use Cable8mm\MmaScrapers\Normalizer\WeightClassNormalizer;
 use Symfony\Component\DomCrawler\Crawler;
 
-class BlackCombatEventParser implements EventParserInterface
+class BlackCombatParser implements EventParserInterface
 {
     /**
      * Parse the HTML content and extract event information.

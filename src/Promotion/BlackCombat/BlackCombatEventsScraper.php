@@ -4,7 +4,7 @@ namespace Cable8mm\MmaScrapers\Promotion\BlackCombat;
 
 use Cable8mm\MmaScrapers\Contract\HttpClientInterface;
 use Cable8mm\MmaScrapers\Contract\Scraper;
-use Cable8mm\MmaScrapers\Parser\BlackCombatEventParser;
+use Cable8mm\MmaScrapers\Parser\BlackCombatParser;
 
 class BlackCombatEventsScraper implements Scraper
 {
@@ -12,7 +12,7 @@ class BlackCombatEventsScraper implements Scraper
 
     public function __construct(
         private HttpClientInterface $http,
-        private BlackCombatEventParser $parser
+        private BlackCombatParser $parser
     ) {
     }
 

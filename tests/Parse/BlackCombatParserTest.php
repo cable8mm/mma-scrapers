@@ -6,13 +6,13 @@ use Cable8mm\MmaScrapers\Enum\FightMethod;
 use Cable8mm\MmaScrapers\Enum\FightStatus;
 use Cable8mm\MmaScrapers\Enum\WeightClass;
 use Cable8mm\MmaScrapers\Enum\WinnerCorner;
-use Cable8mm\MmaScrapers\Parser\BlackCombatEventParser;
+use Cable8mm\MmaScrapers\Parser\BlackCombatParser;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(BlackCombatEventParser::class)]
-class BlackCombatEventParserTest extends TestCase
+#[CoversClass(BlackCombatParser::class)]
+class BlackCombatParserTest extends TestCase
 {
     #[Test]
     public function test_parse_events()
@@ -21,7 +21,7 @@ class BlackCombatEventParserTest extends TestCase
 
         $html = file_get_contents($dir);
 
-        $parser = new BlackCombatEventParser();
+        $parser = new BlackCombatParser();
 
         $events = $parser->parseEvents($html);
 
@@ -40,7 +40,7 @@ class BlackCombatEventParserTest extends TestCase
 
         $html = file_get_contents($dir);
 
-        $parser = new BlackCombatEventParser();
+        $parser = new BlackCombatParser();
 
         $event = $parser->parseEvent($html);
 
@@ -54,7 +54,7 @@ class BlackCombatEventParserTest extends TestCase
 
         $html = file_get_contents($dir);
 
-        $parser = new BlackCombatEventParser();
+        $parser = new BlackCombatParser();
 
         $fights = $parser->parseFights($html);
 
@@ -86,7 +86,7 @@ class BlackCombatEventParserTest extends TestCase
 
         $html = file_get_contents($dir);
 
-        $parser = new BlackCombatEventParser();
+        $parser = new BlackCombatParser();
 
         $fighter = $parser->parseFighter($html);
 

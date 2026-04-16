@@ -3,7 +3,7 @@
 namespace Tests\Promotion\BlackCombat;
 
 use Cable8mm\MmaScrapers\Contract\HttpClientInterface;
-use Cable8mm\MmaScrapers\Parser\BlackCombatEventParser;
+use Cable8mm\MmaScrapers\Parser\BlackCombatParser;
 use Cable8mm\MmaScrapers\Promotion\BlackCombat\BlackCombatEventsScraper;
 use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -27,7 +27,7 @@ class BlackCombatEventsScraperTest extends TestCase
 
         $scraper = new BlackCombatEventsScraper(
             $http,
-            new BlackCombatEventParser()
+            new BlackCombatParser()
         );
 
         $events = $scraper->scrape();
