@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Promotion\BlackCombat;
+namespace Tests\Unit\Parse;
 
 use Cable8mm\MmaScrapers\Enum\FightMethod;
 use Cable8mm\MmaScrapers\Enum\FightStatus;
@@ -17,7 +17,7 @@ class BlackCombatParserTest extends TestCase
     #[Test]
     public function test_parse_events()
     {
-        $dir = __DIR__.'/../Fixtures/BlackCombat/blackcombat_events.html';
+        $dir = __DIR__.'/../../Fixtures/BlackCombat/blackcombat_events.html';
 
         $html = file_get_contents($dir);
 
@@ -36,7 +36,7 @@ class BlackCombatParserTest extends TestCase
     #[Test]
     public function test_parse_event()
     {
-        $dir = __DIR__.'/../Fixtures/BlackCombat/blackcombat_event_287.html';
+        $dir = __DIR__.'/../../Fixtures/BlackCombat/blackcombat_event_287.html';
 
         $html = file_get_contents($dir);
 
@@ -50,7 +50,7 @@ class BlackCombatParserTest extends TestCase
     #[Test]
     public function test_parse_fights()
     {
-        $dir = __DIR__.'/../Fixtures/BlackCombat/blackcombat_event_287.html';
+        $dir = __DIR__.'/../../Fixtures/BlackCombat/blackcombat_event_287.html';
 
         $html = file_get_contents($dir);
 
@@ -82,7 +82,7 @@ class BlackCombatParserTest extends TestCase
     #[Test]
     public function test_parse_fighter()
     {
-        $dir = __DIR__.'/../Fixtures/BlackCombat/blackcombat_fighter_11958177.html';
+        $dir = __DIR__.'/../../Fixtures/BlackCombat/blackcombat_fighter_11958177.html';
 
         $html = file_get_contents($dir);
 

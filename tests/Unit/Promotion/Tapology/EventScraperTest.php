@@ -1,9 +1,7 @@
 <?php
 
-namespace Tests\Promotion\Tapology;
+namespace Tests\Unit\Promotion\Tapology;
 
-use Cable8mm\MmaScrapers\Http\GuzzleHttpClient;
-use Cable8mm\MmaScrapers\Parser\EventParser;
 use Cable8mm\MmaScrapers\Promotion\Tapology\EventScraper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;

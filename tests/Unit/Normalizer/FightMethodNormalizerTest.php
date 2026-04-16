@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Normalizer\Tapology;
+namespace Tests\Unit\Normalizer;
 
 use Cable8mm\MmaScrapers\Enum\FightMethod;
 use Cable8mm\MmaScrapers\Normalizer\FightMethodNormalizer;
